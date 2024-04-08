@@ -31,8 +31,8 @@ DROP TABLE IF EXISTS workexperience;
         companyname TEXT NOT NULL,
         jobtitle TEXT NOT NULL,
         location TEXT NOT NULL,
-        startdate TIMESTAMP NOT NULL,
-        enddate TIMESTAMP NOT NULL,
+        startdate DATE NOT NULL,
+        enddate DATE NOT NULL,
         description TEXT NOT NULL
     )
 `);

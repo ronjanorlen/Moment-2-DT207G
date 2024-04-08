@@ -10,5 +10,40 @@
 <body>
     <h1>Moment 2</h1>
 
+    <form method="post" action="/">
+        <label for="companyname">Företag:</label><br>
+        <input type="text" name="companyname" id="companyname"><br>
+
+        <label for="jobtitle">Titel:</label><br>
+        <input type="text" name="jobtitle" id="jobtitle"><br>
+
+        <label for="location">Plats:</label><br>
+        <input type="text" name="location" id="location"><br>
+
+        <label for="startdate">Startdatum:</label><br>
+        <input type="date" name="startdate" id="startdate"><br>
+
+        <label for="enddate">Slutdatum:</label><br>
+        <input type="date" name="enddate" id="enddate"><br>
+
+        <label for="description">Beskrivning:</label><br>
+        <textarea name="description" id="description"></textarea><br>
+
+        <input type="submit" value="Lägg till arbete">
+    </form>
+
+    <h2>Tidigare erfarenheter:</h2>
+
+    <ul>
+        <% jobs.forEach((job)=> { %>
+            <li><%= job.companyname %></li>
+            <li><%= job.jobtitle %></li>
+            <li><%= job.location %></li>
+            <li><%= job.startdate %></li>
+            <li><%= job.enddate %></li>
+            <li><%= job.description %></li>
+            <% }); %>
+
+    </ul>
 </body>
 </html>
