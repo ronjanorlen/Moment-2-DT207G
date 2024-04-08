@@ -36,3 +36,16 @@ DROP TABLE IF EXISTS workexperience;
         description TEXT NOT NULL
     )
 `);
+
+// Hittepå data som finns från början
+client.query(`
+INSERT INTO workexperience (companyname, jobtitle, location, startdate, enddate, description) VALUES
+('Testföretag', 'Testare', 'Testgatan', '2024-04-01', '2024-04-02', 'Testade lägga in data och skapa API:er'),
+('Hundfixarn', 'Promenixare', 'Åre', '2024-01-10', '2024-02-10', 'Tog långa promenader med hundar')
+`, (err, res) => {
+    if (err) {
+        console.log("Fel vid inmatning: " + err);
+    } else {
+        console.log("Hittepå-data tillagt i databasen");
+    }
+});
