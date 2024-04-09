@@ -10,9 +10,33 @@
     <h1>Sida för att testa express API</h1>
 
     <script>
+        let url = "http://127.0.0.1:3000/api/workexperience";
         getData();
+        createJob("Testföretag", "Testare", "Duved", "2024-04-09", "2024-04-09", "Testade inmatning från HTML-filer");
+        
         async function getData() {
-            const response = await fetch("http://127.0.0.1:3000/api/workexperience");
+            const response = await fetch(url);
+
+            const data = await response.json();
+            console.table(data);
+        }
+
+        async function createJob(companyname, jobtitle, location, startdate, enddate, description) {
+            let jobs = {
+            companyname: companyname,
+            jobtitle: jobtitle,
+            location: location,
+            startdate: startdate,
+            enddate: enddate,
+            description: description
+            }
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "content-type": "Application/json"
+                },
+                body: JSON.stringify(jobs)
+            });
 
             const data = await response.json();
             console.log(data);

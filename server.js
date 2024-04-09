@@ -84,16 +84,27 @@ app.post("/api/workexperience", (req, res) => {
         return; // Kör inte vidare om fel
     }
 
-    let job = {
-        companyname: companyname,
-        jobtitle: jobtitle,
-        location: location,
-        startdate: startdate,
-        enddate: enddate,
-        description: description
-    };
+    // Lägg till nytt jobb till databasen
+    client.query(`INSERT INTO workexperience(companyname, jobtitle, location, startdate, enddate, description) VALUES($1, $2, $3, $4, $5, $6);`, [companyname, jobtitle, location, startdate, enddate, description], (err, results) => {
+        if(err) {
+            res.status(500).json({error: "Något blev fel: " + err});
+            return;
+        }
 
-    res.json({message: "Jobb tillagt", job});
+        // Om lyckat, skapa objekt 
+        let job = {
+            companyname: companyname,
+            jobtitle: jobtitle,
+            location: location,
+            startdate: startdate,
+            enddate: enddate,
+            description: description
+        };
+        // Skicka meddelande för tillagt jobb
+        res.json({message: "Jobb tillagt", job});
+    });
+
+
 });
 
 // Route - PUT

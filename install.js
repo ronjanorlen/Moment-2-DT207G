@@ -40,8 +40,11 @@ DROP TABLE IF EXISTS workexperience;
 // Hittepå data som finns från början
 client.query(`
 INSERT INTO workexperience (companyname, jobtitle, location, startdate, enddate, description) VALUES
-('Testföretag', 'Testare', 'Testgatan', '2024-04-01', '2024-04-02', 'Testade lägga in data och skapa API:er'),
-('Hundfixarn', 'Promenixare', 'Åre', '2024-01-10', '2024-02-10', 'Tog långa promenader med hundar')
+('Testföretag', 'Testare', 'Testgatan', '2024-04-01', '2024-04-02', 'Testade lägga in data och skapa API:er.'),
+('Hundfixarn', 'Promenixare', 'Åre', '2024-01-10', '2024-02-10', 'Tog långa promenader med hundar.'),
+('KaffeHörnet', 'Smakare', 'Östersund', '2023-12-01', '2023-12-31', 'Jobbet gick ut på att prova olika sorters kaffe för att hitta de mest utsökta kaffebönorna.'),
+('SkiAllMountains', 'Skidortsanalytiker', 'Ortsoberoende', '2023-08-01', '2023-11-28', 'Reste runt i världen och testade olika skidorter. Bedömde snökvalitet, restauranger och backarnas svårighetsgrad.'),
+('PetLife', 'Gosare', 'Stockholm', '2023-04-02', '2023-07-30', 'Som Gosare var min uppgift att spendera tid med olika djur så som hamstrar, kaniner och marsvin. Jag såg till att de var lyckliga och välmående varje dag.')
 `, (err, res) => {
     if (err) {
         console.log("Fel vid inmatning: " + err);
