@@ -114,7 +114,22 @@ app.put("/api/workexperience/:id", (req, res) => {
 
 // Route - DELETE
 app.delete("/api/workexperience/:id", (req, res) => {
-    res.json({message: "Jobb raderat " + req.params.id});
+    const jobID = req.params.id; // Hämta jobbID från URL-parameter
+
+    // SQL-fråga för att ta bort jobb från databas
+    client.query(`DELETE FROM workexperience WHERE id = $1`, [jobID], (err, results) => {
+        if(err) {
+            res.status(500).json({error: "Något blev fel: " + err});
+            return;
+        }
+        if(results.rowCount === 0) {
+            res.status(404).json({message: "Inget jobb hittades med ID: " + jobID });
+        } else {
+            res.json({message: "Jobb raderat", jobID });
+        }
+    });
+
+  //  res.json({message: "Jobb raderat " + req.params.id});
 });
 
 
