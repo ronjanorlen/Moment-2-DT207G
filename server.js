@@ -30,7 +30,7 @@ app.use(cors());
 app.use(express.json());
 
 // Route - GET
-app.get("/api", (req, res) => {
+app.get("/", (req, res) => {
     res.json({message: "Välkommen till mitt API"});
 });
 
