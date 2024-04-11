@@ -25,7 +25,7 @@ Nedan finns beskrivet hur man nå APIet på olika vis:
 |PUT    |/workexperience/:id |Uppdaterar ett befintligt jobb med angivet ID. Kräver att jobb-objekt skickas med. |
 |DELETE |/workexperience/:id |Raderar ett jobb med angivet id.                                                   |
 
-Ett kurs-objekt returneras/skickas som JSON med följande struktur:
+Ett jobb-objekt returneras/skickas som JSON med följande struktur:
 ```
 {
     "id": 1,
