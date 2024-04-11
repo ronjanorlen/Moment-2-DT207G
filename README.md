@@ -3,7 +3,7 @@ Detta repository innehåller koden för ett simplare REST API som är byggt med 
 Grundläggande funktionalitet för CRUD (Create, Read, Update, Delete) är implementerad.
 
 ## Länk
-En liveversion av APIet finns tillgänglig på följande URL: [Lägg till testserver här](Länk här) 
+En liveversion av APIet finns tillgänglig på följande URL: [https://moment-2-dt207g.onrender.com/](https://moment-2-dt207g.onrender.com/) 
 
 ## Installation, databas
 APIet använder PostgreSQL som databas.
