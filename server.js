@@ -109,7 +109,27 @@ app.post("/api/workexperience", (req, res) => {
 
 // Route - PUT
 app.put("/api/workexperience/:id", (req, res) => {
-    res.json({message: "Jobb uppdaterat" + req.params.id});
+    const jobId = req.params.id; // Hämta jobb-ID från URL-parameter
+    const { companyname, jobtitle, location, startdate, enddate, description } = req.body; // Hämta uppdaterade uppgifter
+
+    // Uppdatera jobb i databasen
+    client.query(
+        `UPDATE workexperience 
+         SET companyname = $1, jobtitle = $2, location = $3, startdate = $4, enddate = $5, description = $6 
+         WHERE id = $7`,
+        [companyname, jobtitle, location, startdate, enddate, description, jobId],
+        (err, results) => {
+            if (err) {
+                res.status(500).json({ error: "Något blev fel: " + err });
+                return;
+            }
+            if (results.rowCount === 0) {
+                res.status(404).json({ message: "Inget jobb hittades med ID: " + jobId });
+            } else {
+                res.json({ message: "Jobb uppdaterat", jobId });
+            }
+        }
+    );
 });
 
 // Route - DELETE
