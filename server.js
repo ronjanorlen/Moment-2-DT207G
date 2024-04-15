@@ -148,8 +148,6 @@ app.delete("/api/workexperience/:id", (req, res) => {
             res.json({message: "Jobb raderat", jobID });
         }
     });
-
-  //  res.json({message: "Jobb raderat " + req.params.id});
 });
 
 
